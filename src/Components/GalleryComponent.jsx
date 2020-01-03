@@ -3,27 +3,24 @@ import axios from 'axios';
 import ImgComponent from './ImgComponent';
 
 class GalleryComponent extends Component {
-
-    getPhotos() {
-        console.log("get");
-        axios.get("https://boiling-refuge-66454.herokuapp.com/images")
-        .then((response) => {
-            console.log(response.data)
-            for (let i = 0; i < response.data.length; i++){
-                console.log(response.data[i].url);
-            }
-        });
+    constructor(props){
+        super(props);
+        this.state = {
+            items: [],
+        }
     }
 
+    componentDidMount() {
+        axios.get("https://boiling-refuge-66454.herokuapp.com/images")
+        .then((response) => {
+            console.log(response.data);
+            this.setState({items: response.data})
+        });
+    }
     render(){
         return(
             <div className="gallery">
-                <ImgComponent url="https://picsum.photos/id/237/300/200"/>
-                <ImgComponent/>
-                <ImgComponent/>
-                <ImgComponent/>
-                <ImgComponent/>
-                <ImgComponent/>
+                {this.state.items.map(item => <ImgComponent url={item.url} id={item.id} key={item.id}/>)}
             </div>
         )
     }
