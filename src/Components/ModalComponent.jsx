@@ -14,28 +14,44 @@ class ModalComponent extends Component {
         store.subscribe(() => this.active());
     }
 
+    componentWillMount(){
+        document.addEventListener("keydown", this.escFunction, false);
+    }
+
+    escFunction = (e) => {
+        if (e.keyCode === 27) {
+            this.close();
+        }
+    }
+
     active() {
         this.setState({open: store.getState()})
         if (store.getState() !== false){
             axios.get('https://boiling-refuge-66454.herokuapp.com/images/' + store.getState())
             .then((response) => {
-                console.log(response.data.comments);
                 this.setState({url: response.data.url})
                 this.setState({comments: response.data.comments})
-                // console.log(response.data.comments[0].date.year)
-                let date = new Date(response.data.comments[0].date);
-                console.log(date);
             });
         } 
     }
 
-    getDate(oldDate) {
+    getDate = (oldDate) => {
         let date = new Date(oldDate);
-        console.log(date)
-        return date.toString()
+        console.log(`${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`)
+        let month = this.addNullToDate(date.getMonth()+1);
+        let dateNumber = this.addNullToDate(date.getDate());
+        return `${dateNumber}.${month}.${date.getFullYear()}`
+    }
+
+    addNullToDate(date) {
+        if (date < 10) {
+            date = "0" + date;
+        }
+        return date
     }
 
     close = () => {
+        console.log("close");
         store.dispatch( {type: false});
         this.setState({url: ""});
         this.setState({comments: []});
@@ -57,16 +73,6 @@ class ModalComponent extends Component {
                                     <p className="comments__text">{item.text}</p>
                                 </li>)
                             }
-
-                            {/* <li className="comments__item">
-                                <time className="comments__date">18.12.2019</time>
-                                <p className="comments__text">Отличное фото</p>
-                            </li>     
-
-                            <li className="comments__item">
-                                <time className="comments__date">13.11.2019</time>
-                                <p className="comments__text">Круто!</p>
-                            </li>    */}
                         </ul>
                     </div>
                 </div>
