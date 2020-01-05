@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { store } from '../store';
+import CommentsComponent from './CommentsComponent';
+import AddCommentComponent from './AddCommentComponent';
 
 class ModalComponent extends Component {
     constructor(props) {
@@ -14,16 +16,6 @@ class ModalComponent extends Component {
         store.subscribe(() => this.active());
     }
 
-    componentWillMount(){
-        document.addEventListener("keydown", this.escFunction, false);
-    }
-
-    escFunction = (e) => {
-        if (e.keyCode === 27) {
-            this.close();
-        }
-    }
-
     active() {
         this.setState({open: store.getState()})
         if (store.getState() !== false){
@@ -35,26 +27,22 @@ class ModalComponent extends Component {
         } 
     }
 
-    getDate = (oldDate) => {
-        let date = new Date(oldDate);
-        console.log(`${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`)
-        let month = this.addNullToDate(date.getMonth()+1);
-        let dateNumber = this.addNullToDate(date.getDate());
-        return `${dateNumber}.${month}.${date.getFullYear()}`
-    }
-
-    addNullToDate(date) {
-        if (date < 10) {
-            date = "0" + date;
-        }
-        return date
-    }
-
     close = () => {
-        console.log("close");
         store.dispatch( {type: false});
         this.setState({url: ""});
         this.setState({comments: []});
+    }
+
+
+    componentWillMount(){
+        // store.dispatch( {type: 237}); // Временно для тестирования!!!
+        document.addEventListener("keydown", this.escFunction, false);
+    }
+
+    escFunction = (e) => {
+        if (e.keyCode === 27) {
+            this.close();
+        }
     }
 
     render() {
@@ -66,14 +54,16 @@ class ModalComponent extends Component {
                     <div className="modal__content">
                         <button className="button-close modal__button-close" onClick={this.close}></button>
                         <img className="modal__img" src={this.state.url}/>
-                        <ul className="comments modal__comments">
-                            {this.state.comments.map(item => 
-                                <li className="comments__item" key={item.id}>
-                                    <time className="comments__date">{this.getDate(item.date)}</time>
-                                    <p className="comments__text">{item.text}</p>
-                                </li>)
-                            }
-                        </ul>
+
+                        {this.state.comments.length > 0 &&
+                        <div className="modal__comments">
+                            <CommentsComponent comments={this.state.comments}/>
+                        </div>
+                        }
+
+                        <div className="modal__add-comment">
+                            <AddCommentComponent photoId={store.getState()}/>
+                        </div>
                     </div>
                 </div>
                 }

@@ -13,7 +13,6 @@ class GalleryComponent extends Component {
     componentDidMount() {
         axios.get("https://boiling-refuge-66454.herokuapp.com/images")
         .then((response) => {
-            console.log(response.data);
             this.setState({items: response.data})
         });
     }
