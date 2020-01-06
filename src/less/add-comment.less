@@ -1,7 +1,18 @@
 .add-comment__input {
     margin-bottom: 20px;
+    width: @button-width;
 }
 
 .add-comment__button {
-    width: 100%;
+    width: @button-width;
+}
+
+@media (min-width: @desktop-width) {
+    .add-comment__input {
+        width: @button-width-desktop;
+    }
+
+    .add-comment__button {
+        width: @button-width-desktop;
+    }
 }

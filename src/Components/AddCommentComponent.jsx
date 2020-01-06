@@ -25,7 +25,7 @@ class AddCommentComponent extends Component {
         return(
             <form className="add-comment" onSubmit={this.sendComment}>
                 <input id="name" onChange={this.handleChange} className="input-text add-comment__input" type="name" placeholder="Ваше имя" required/>
-                <input id="comment" onChange={this.handleChange} className="input-text add-comment__input" type="text" placeholder="Ваш комментарий" required/>
+                <input id="comment" onChange={this.handleChange} className="input-text add-comment__input" type="text" placeholder="Ваш комментарий" autoComplete="off" required/>
                 <button className="button add-comment__button" type="submit">Оставить комментарий</button>
             </form>
         )

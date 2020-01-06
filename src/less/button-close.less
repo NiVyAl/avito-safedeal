@@ -1,0 +1,28 @@
+.button-close {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    position: relative;
+    border: none;
+    background-color: transparent;
+}
+
+.button-close::before, .button-close::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    left: -20%;
+    transform: rotate(45deg);
+    width: 140%;
+    height: 1px;
+    background-color: black;
+}
+
+.button-close::after {
+    transform: rotate(-45deg);
+}

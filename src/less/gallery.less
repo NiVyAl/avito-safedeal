@@ -1,8 +1,7 @@
 .gallery {
     display: flex;
-    justify-content: space-between;
-    // align-items: ;
-    flex-wrap: wrap;
+    
+    flex-direction: column;
     padding-bottom: 50px;  //ВРЕМЕННО
     // display: grid;  
     // grid-gap: 5px;  
@@ -11,8 +10,22 @@
 }
 
 .gallery__img {
-    width: 229px;
-    height: 142px;
-    margin: 10px 0; //ВРЕМЕННО
-    cursor: pointer;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+@media (min-width: @desktop-width) {
+    .gallery {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .gallery__img {
+        width: 229px;
+        height: 142px;
+        margin: 10px 0; //ВРЕМЕННО
+        cursor: pointer;
+    }
 }
