@@ -17,14 +17,21 @@ class CommentsComponent extends Component {
 
     render(){
         return(
-            <ul className="comments">
-                {this.props.comments.map(item => 
-                    <li className="comments__item" key={item.id}>
-                        <time className="comments__date">{this.getDate(item.date)}</time>
-                        <p className="comments__text">{item.text}</p>
-                    </li>)
-                }
-            </ul>
+            <div>
+            {this.props.comments.length > 0 &&
+                <ul className="comments">
+                    {this.props.comments.map(item => 
+                        <li className="comments__item" key={item.id}>
+                            <time className="comments__date">{this.getDate(item.date)}</time>
+                            <p className="comments__text">{item.text}</p>
+                        </li>)
+                    }
+                </ul>
+            }
+            {this.props.comments.length === 0 &&
+                <p className="comments__text">Комментариев нет</p>
+            }
+            </div>
         )
     }
 }

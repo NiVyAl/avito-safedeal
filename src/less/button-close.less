@@ -1,10 +1,11 @@
 .button-close {
-    width: 18px;
-    height: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
     padding: 0;
     position: relative;
-    border: none;
-    background-color: transparent;
+    border: none;  
 }
 
 .button-close::before, .button-close::after {
@@ -16,13 +17,25 @@
     bottom: 0;
     top: 0;
     margin: auto;
-    left: -20%;
     transform: rotate(45deg);
-    width: 140%;
+    width: 63%;
     height: 1px;
     background-color: black;
 }
 
 .button-close::after {
     transform: rotate(-45deg);
+}
+
+@media (min-width: @desktop-width) {
+    .button-close {
+        width: 18px;
+        height: 18px;
+        background-color: transparent;
+    }
+
+    .button-close::before, .button-close::after {
+        width: 140%;
+        left: -20%;
+    }
 }

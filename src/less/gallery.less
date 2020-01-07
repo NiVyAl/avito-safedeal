@@ -2,6 +2,7 @@
     display: flex;
     
     flex-direction: column;
+    align-items: center;
     padding-bottom: 50px;  //ВРЕМЕННО
     // display: grid;  
     // grid-gap: 5px;  
@@ -9,10 +10,26 @@
     // grid-template-rows: repeat(2, 100px);  
 }
 
-.gallery__img {
+.gallery__img-container {
     width: 100%;
+    // max-width: 400px;
     height: auto;
     margin-bottom: 30px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery__img {
+    width: 100%;
+    display: block;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // left: 0;
+    // bottom: 0;
+    // margin: auto;
 }
 
 @media (min-width: @desktop-width) {
@@ -22,7 +39,7 @@
         flex-wrap: wrap;
     }
 
-    .gallery__img {
+    .gallery__img-container {
         width: 229px;
         height: 142px;
         margin: 10px 0; //ВРЕМЕННО

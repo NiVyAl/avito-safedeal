@@ -55,11 +55,9 @@ class ModalComponent extends Component {
                         <button className="button-close modal__button-close" onClick={this.close}></button>
                         <img className="modal__img" src={this.state.url}/>
 
-                        {this.state.comments.length > 0 &&
                         <div className="modal__comments">
                             <CommentsComponent comments={this.state.comments}/>
                         </div>
-                        }
 
                         <div className="modal__add-comment">
                             <AddCommentComponent photoId={store.getState()}/>

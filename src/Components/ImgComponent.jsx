@@ -8,7 +8,9 @@ class ImgComponent extends Component {
 
     render() {
         return(
-            <img className="gallery__img" src={this.props.url} onClick={this.openModal}/>
+            <button className="gallery__img-container" onClick={this.openModal}>
+                <img className="gallery__img" src={this.props.url}/>
+            </button>
         )
     }
 }
