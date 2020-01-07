@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { store } from '../store';
 import CommentsComponent from './CommentsComponent';
 import AddCommentComponent from './AddCommentComponent';
+import ApiService from "../service/ApiService";
 
 class ModalComponent extends Component {
     constructor(props) {
@@ -19,7 +20,12 @@ class ModalComponent extends Component {
     active() {
         this.setState({open: store.getState()})
         if (store.getState() !== false){
-            axios.get('https://boiling-refuge-66454.herokuapp.com/images/' + store.getState())
+            // axios.get('https://boiling-refuge-66454.herokuapp.com/images/' + store.getState())
+            // .then((response) => {
+            //     this.setState({url: response.data.url})
+            //     this.setState({comments: response.data.comments})
+            // });
+            ApiService.getImages(store.getState())
             .then((response) => {
                 this.setState({url: response.data.url})
                 this.setState({comments: response.data.comments})

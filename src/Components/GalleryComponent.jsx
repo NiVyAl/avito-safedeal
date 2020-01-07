@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import ImgComponent from './ImgComponent';
 import ApiService from "../service/ApiService";
 
