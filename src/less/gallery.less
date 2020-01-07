@@ -24,12 +24,6 @@
 .gallery__img {
     width: 100%;
     display: block;
-    // position: absolute;
-    // top: 0;
-    // right: 0;
-    // left: 0;
-    // bottom: 0;
-    // margin: auto;
 }
 
 @media (min-width: @desktop-width) {
@@ -42,7 +36,16 @@
     .gallery__img-container {
         width: 229px;
         height: 142px;
-        margin: 10px 0; //ВРЕМЕННО
+        margin: 15px 0; //ВРЕМЕННО
         cursor: pointer;
+    }
+
+    .gallery__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
     }
 }

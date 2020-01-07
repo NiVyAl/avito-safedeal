@@ -52,7 +52,7 @@ class ModalComponent extends Component {
                 <div className="modal">
                     <div className="modal__background"></div>
                     <div className="modal__content">
-                        <button className="button-close modal__button-close" onClick={this.close}></button>
+                        <button className="button-close modal__button-close" onClick={this.close} tabIndex="1"></button>
                         <img className="modal__img" src={this.state.url}/>
 
                         <div className="modal__comments">

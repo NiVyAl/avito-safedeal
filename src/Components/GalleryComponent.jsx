@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import ImgComponent from './ImgComponent';
+import ApiService from "../service/ApiService";
 
 class GalleryComponent extends Component {
     constructor(props){
@@ -11,11 +12,12 @@ class GalleryComponent extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://boiling-refuge-66454.herokuapp.com/images")
+        ApiService.getImages()
         .then((response) => {
             this.setState({items: response.data})
         });
     }
+
     render(){
         return(
             <div className="gallery">
