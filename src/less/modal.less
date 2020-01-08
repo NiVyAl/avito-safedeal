@@ -70,15 +70,19 @@
     .modal__content {
         height: fit-content;  
         max-width: 619px; 
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;  
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        // justify-content: flex-start;
+        // align-items: flex-start;  
+        display: grid;
+        grid-template-columns: @button-width-desktop 213px;
+        grid-template-rows: max-content min-content;
         padding: 30px;
     }
 
     .modal__img {
         width: @button-width-desktop;
-        flex-grow: 0;
+        // flex-grow: 0;
     }
 
     .modal__img-stub {
@@ -91,5 +95,15 @@
 
     .modal__comments {
         padding-left: 14px;
+        grid-row-start: 1;
+        grid-row-end: span 2;
+        grid-column-start: 2;
+
+        // order: 2;
+    }
+
+    .modal__add-comment {
+        // order: 1;
+        width: @button-width-desktop;
     }
 }
