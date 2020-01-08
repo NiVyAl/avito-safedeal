@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import ApiService from "../service/ApiService";
 
 class AddCommentComponent extends Component {
@@ -12,10 +11,6 @@ class AddCommentComponent extends Component {
             }
         };
         console.log(data);
-        // axios.post(`https://boiling-refuge-66454.herokuapp.com/images/${this.props.photoId}/comments`, data)
-        //     .then(response => {
-        //         console.log(response);
-        //     });
         ApiService.addComment(data, this.props.photoId)
             .then(response => {
                 console.log(response);

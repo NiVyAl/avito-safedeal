@@ -3,3 +3,17 @@ body {
     margin: 0;
     font-family: "Roboto-condensed", "Arial";
 }
+
+.stop-scroll {
+    overflow: hidden;
+}
+
+.page-hide {
+    opacity: 0;
+}
+
+@media (min-width: @desktop-width) {
+    .page-hide {
+        opacity: 1;
+    }
+}

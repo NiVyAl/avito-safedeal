@@ -11,6 +11,7 @@ class ModalComponent extends Component {
         
         this.state = {
           open: false,
+          isImgLoad: false,
           comments: [],
         }
 
@@ -20,28 +21,28 @@ class ModalComponent extends Component {
     active() {
         this.setState({open: store.getState()})
         if (store.getState() !== false){
-            // axios.get('https://boiling-refuge-66454.herokuapp.com/images/' + store.getState())
-            // .then((response) => {
-            //     this.setState({url: response.data.url})
-            //     this.setState({comments: response.data.comments})
-            // });
             ApiService.getImages(store.getState())
             .then((response) => {
                 this.setState({url: response.data.url})
                 this.setState({comments: response.data.comments})
             });
         } 
+        document.body.classList.add("stop-scroll");
+        document.querySelector(".main-page").classList.add("page-hide");
     }
 
     close = () => {
         store.dispatch( {type: false});
         this.setState({url: ""});
         this.setState({comments: []});
+        this.setState({isImgLoad: false});
+        document.body.classList.remove("stop-scroll");
+        document.querySelector(".main-page").classList.remove("page-hide");
     }
 
 
     componentWillMount(){
-        // store.dispatch( {type: 237}); // Временно для тестирования!!!
+        // store.dispatch( {type: 242}); // Временно для тестирования!!!
         document.addEventListener("keydown", this.escFunction, false);
     }
 
@@ -51,6 +52,11 @@ class ModalComponent extends Component {
         }
     }
 
+    imgLoad = () => {
+        console.log("load");
+        this.setState({isImgLoad: true});
+    }
+
     render() {
         return(
             <div>
@@ -58,9 +64,13 @@ class ModalComponent extends Component {
                 <div className="modal">
                     <div className="modal__background"></div>
                     <div className="modal__content">
-                        <button className="button-close modal__button-close" onClick={this.close} tabIndex="1"></button>
-                        <img className="modal__img" src={this.state.url}/>
-
+                        <button className="button-close modal__button-close" onClick={this.close}></button>
+                        {this.state.url &&
+                            <img className="modal__img" src={this.state.url} onLoad={this.imgLoad}/>
+                        }
+                        {!this.state.isImgLoad && 
+                            <div className="modal__img-stub"></div>
+                        }
                         <div className="modal__comments">
                             <CommentsComponent comments={this.state.comments}/>
                         </div>

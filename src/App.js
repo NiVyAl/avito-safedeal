@@ -8,10 +8,12 @@ import ModalComponent from './Components/ModalComponent';
 function App() {
   return (
     <div className="wrapper">
-      <HeaderComponent/>
       <ModalComponent/>
-      <GalleryComponent/>
-      <FooterComponent/>
+      <div className="main-page">
+        <HeaderComponent/>
+        <GalleryComponent/>
+        <FooterComponent/>
+      </div>
     </div>
   );
 }
