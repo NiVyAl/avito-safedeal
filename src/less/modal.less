@@ -27,16 +27,19 @@
     margin: auto;
     background-color: white;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     box-sizing: border-box;
     overflow-y: scroll;
+
+    // display: flex;
+    // flex-direction: column;
+    display: grid;
+    grid-template-rows: max-content min-content;
 }
 
 .modal__img {
     width: @button-width;
     display: block;
-    flex-shrink: 0;
+    // flex-shrink: 0;
 }
 
 .modal__img-stub {
@@ -70,19 +73,14 @@
     .modal__content {
         height: fit-content;  
         max-width: 619px; 
-        // flex-direction: row;
-        // flex-wrap: wrap;
-        // justify-content: flex-start;
-        // align-items: flex-start;  
-        display: grid;
+        // display: grid;
         grid-template-columns: @button-width-desktop 213px;
-        grid-template-rows: max-content min-content;
+        // grid-template-rows: max-content min-content;
         padding: 30px;
     }
 
     .modal__img {
         width: @button-width-desktop;
-        // flex-grow: 0;
     }
 
     .modal__img-stub {
@@ -98,12 +96,9 @@
         grid-row-start: 1;
         grid-row-end: span 2;
         grid-column-start: 2;
-
-        // order: 2;
     }
 
     .modal__add-comment {
-        // order: 1;
         width: @button-width-desktop;
     }
 }
