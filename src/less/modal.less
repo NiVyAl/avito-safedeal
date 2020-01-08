@@ -72,19 +72,22 @@
 @media (min-width: @desktop-width) {
     .modal__content {
         height: fit-content;  
-        max-width: 619px; 
+        // width: 619px; 
+        width: 80.598vw; 
+        max-height: 98vh;
         // display: grid;
-        grid-template-columns: @button-width-desktop 213px;
+        // grid-template-columns: auto 213px;
+        grid-template-columns: 3fr 2fr;
         // grid-template-rows: max-content min-content;
         padding: 30px;
     }
 
     .modal__img {
-        width: @button-width-desktop;
+        // width: @button-width-desktop;
     }
 
     .modal__img-stub {
-        width: @button-width-desktop;
+        // width: @button-width-desktop;
     }
 
     .modal__comments, .modal__add-comment{
@@ -99,6 +102,12 @@
     }
 
     .modal__add-comment {
-        width: @button-width-desktop;
+        // width: @button-width-desktop;
+    }
+}
+
+@media (min-width: @wrapper-max-width) {
+    .modal__content {
+        width: calc(80.598*@wrapper-max-width/100);
     }
 }
