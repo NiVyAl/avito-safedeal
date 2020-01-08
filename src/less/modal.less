@@ -4,7 +4,6 @@
     height: 100%;
     top: 0;
     left: 0;
-    // overflow-y: scroll;
     z-index: 10;
 }
 
@@ -30,8 +29,6 @@
     box-sizing: border-box;
     overflow-y: scroll;
 
-    // display: flex;
-    // flex-direction: column;
     display: grid;
     grid-template-rows: max-content min-content;
 }
@@ -39,7 +36,6 @@
 .modal__img {
     width: @button-width;
     display: block;
-    // flex-shrink: 0;
 }
 
 .modal__img-stub {
@@ -72,22 +68,10 @@
 @media (min-width: @desktop-width) {
     .modal__content {
         height: fit-content;  
-        // width: 619px; 
         width: 80.598vw; 
         max-height: 98vh;
-        // display: grid;
-        // grid-template-columns: auto 213px;
         grid-template-columns: 3fr 2fr;
-        // grid-template-rows: max-content min-content;
         padding: 30px;
-    }
-
-    .modal__img {
-        // width: @button-width-desktop;
-    }
-
-    .modal__img-stub {
-        // width: @button-width-desktop;
     }
 
     .modal__comments, .modal__add-comment{
@@ -95,14 +79,10 @@
     }
 
     .modal__comments {
-        padding-left: 14px;
+        padding-left: 20px;
         grid-row-start: 1;
         grid-row-end: span 2;
         grid-column-start: 2;
-    }
-
-    .modal__add-comment {
-        // width: @button-width-desktop;
     }
 }
 

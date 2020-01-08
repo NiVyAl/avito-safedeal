@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import axios from 'axios';
 import { store } from '../store';
 import CommentsComponent from './CommentsComponent';
 import AddCommentComponent from './AddCommentComponent';
@@ -27,7 +26,7 @@ class ModalComponent extends Component {
             });
         } 
         document.body.classList.add("stop-scroll");
-        // document.querySelector(".main-page").classList.add("page-hide");
+        document.querySelector(".main-page").classList.add("page-hide");
     }
 
     close = () => {
@@ -41,7 +40,6 @@ class ModalComponent extends Component {
 
 
     componentWillMount(){
-        store.dispatch( {type: 242}); // Временно для тестирования!!!
         document.addEventListener("keydown", this.escFunction, false);
     }
 
@@ -59,7 +57,7 @@ class ModalComponent extends Component {
                     <div className="modal__background"></div>
                     <div className="modal__content">
                         <button className="button-close modal__button-close" onClick={this.close}></button>
-                        <img className="modal__img" src={this.state.url} onLoad={this.imgLoad}/>
+                        <img className="modal__img" src={this.state.url}/>
                         <div className="modal__comments">
                             <CommentsComponent comments={this.state.comments}/>
                         </div>

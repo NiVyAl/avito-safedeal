@@ -22,13 +22,8 @@
     .gallery {
         display: grid;
         justify-content: space-between;
-        // grid-template-columns: 229px 229px 229px;
-        // grid-template-rows: 142px 142px;
         grid-template-columns: repeat(3, 29.817vw);
         grid-template-rows: repeat(2, 18.489vw);
-        // grid-column-gap: 21px;
-        // grid-row-gap: 30px;
-        // grid-column-gap: 2.73vw;
         grid-row-gap: 3.9vw;
     }
 
@@ -51,7 +46,6 @@
     .gallery {
         grid-template-columns: repeat(3, calc(29.817*@wrapper-max-width/100));
         grid-template-rows: repeat(2, calc(18.489*@wrapper-max-width/100));
-        // grid-column-gap: calc(2.73*@wrapper-max-width/100);
         grid-row-gap: calc(3.9*@wrapper-max-width/100);
     }
 }
